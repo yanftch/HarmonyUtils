@@ -1,10 +1,11 @@
 {
   "name": "entry",
   "version": "1.0.0",
-  "description": "Please describe the basic information.",
+  "description": "在Harmony开发过程中，需要用到许多工具类，如与系统交互、获取基本信息等等，为了方便查找和快速使用，因此整理了如下工具类集合\n便于快速开发鸿蒙应用~",
   "main": "",
+  "repository": "https://github.com/yanftch/common-utils",
   "author": "",
-  "license": "",
+  "license": "Apache-2.0",
   "dependencies": {
     "common_lib":"file:../common_lib"
   }
