@@ -1,0 +1,39 @@
+{
+  "float": [
+    {
+      "name": "vp_6",
+      "value": "6vp"
+    },
+    {
+      "name": "vp_10",
+      "value": "10vp"
+    },
+    {
+      "name": "vp_16",
+      "value": "16vp"
+    },
+    {
+      "name": "vp_24",
+      "value": "24vp"
+    }, {
+      "name": "vp_30",
+      "value": "30vp"
+    },
+    {
+      "name": "vp_40",
+      "value": "40vp"
+    },
+    {
+      "name": "fp_16",
+      "value": "16fp"
+    },
+    {
+      "name": "fp_24",
+      "value": "24fp"
+    },
+    {
+      "name": "fp_32",
+      "value": "32fp"
+    }
+  ]
+}
