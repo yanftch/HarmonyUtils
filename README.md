@@ -23,7 +23,7 @@
 
 # 功能模块具体明细
 
-## AppUtil
+## AppUtil  [查看源码](https://github.com/yanftch/common-utils/blob/main/common_lib/src/main/ets/lib/utils/AppUtil.ets)
 
 | 方法                                                                      | 作用            |
 |-------------------------------------------------------------------------|---------------|
@@ -42,7 +42,7 @@
 | startAppStoreDetailAbility(bundleName: string)                          | 拉起应用市场界面      |
 | startCameraPicker                                                       | 拉起相机界面        |
 
-## DateUtil
+## DateUtil [查看源码](https://github.com/yanftch/common-utils/blob/main/common_lib/src/main/ets/lib/utils/DateUtil.ets)
 
 | 方法                                                 | 作用                                   |
 |----------------------------------------------------|--------------------------------------|
@@ -57,7 +57,7 @@
 | changeStr2Timestamp(dateString: string)            | 将字符串格式转换成时间戳                         |
 | changeStr2Date(dateString: string)                 | 将字符串格式转换成Date对象                      |
 
-## ScreenUtil
+## ScreenUtil [查看源码](https://github.com/yanftch/common-utils/blob/main/common_lib/src/main/ets/lib/utils/ScreenUtil.ets)
 
 | 方法                    | 作用                      |
 |-----------------------|-------------------------|
