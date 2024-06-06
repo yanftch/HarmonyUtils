@@ -1,4 +1,4 @@
-import { common, Want } from '@kit.AbilityKit';
+import { bundleManager, common, Want } from '@kit.AbilityKit';
 import window from '@ohos.window';
 import { BusinessError } from '@kit.BasicServicesKit';
 import App from '@system.app';
@@ -208,6 +208,45 @@ export class AppUtil {
       let err = error as BusinessError;
       console.error(`the pick call failed. error code: ${err.code}`);
     }
+  }
+
+  /**
+   * 获取应用版本号
+   */
+  static async getAppVersionCode(): Promise<number> {
+    let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+    let bundleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags)
+    let versionCode = bundleInfo.versionCode
+    console.log("debug_AppUtil: versionCode=" + versionCode)
+    return new Promise(resolve => {
+      resolve(versionCode)
+    })
+  }
+
+  /**
+   * 获取应用版本名
+   */
+  static async getAppVersionName(): Promise<string> {
+    let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+    let bundleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags)
+    let versionName = bundleInfo.versionName
+    console.log("debug_AppUtil: versionName=" + versionName)
+    return new Promise(resolve => {
+      resolve(versionName)
+    })
+  }
+
+  /**
+   * 获取应用bundleName
+   */
+  static async getAppBundleName(): Promise<string> {
+    let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+    let bundleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags)
+    let bundleName = bundleInfo.name
+    console.log("debug_AppUtil: bundleName=" + bundleName)
+    return new Promise(resolve => {
+      resolve(bundleName)
+    })
   }
 }
 

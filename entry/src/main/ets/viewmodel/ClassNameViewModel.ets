@@ -43,6 +43,9 @@ const ALL_DATA: ClassFunctionGroupBean[] = [
   new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 10, "startBrowsableAbility", "拉起浏览器应用"),
   new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 11, "startAppStoreDetailAbility", "拉起应用市场界面"),
   new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 12, "startCameraPicker", "拉起相机界面"),
+  new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 13, "getAppVersionCode", "获取应用版本号"),
+  new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 14, "getAppVersionName", "获取应用版本名"),
+  new ClassFunctionGroupBean(parentId_AppUtil, "AppUtil", 15, "getAppBundleName", "获取应用bundleName"),
 
   new ClassFunctionGroupBean(parentId_DateUtil, "DateUtil", 1, "getToday", "今日(date)"),
   new ClassFunctionGroupBean(parentId_DateUtil, "DateUtil", 2, "getTimestamp", "时间戳是"),

@@ -1,3 +1,4 @@
+import { AppUtil } from '../utils/AppUtil';
 import { DateUtil } from '../utils/DateUtil';
 
 @Preview
@@ -11,7 +12,11 @@ export struct MainPage {
     let current: Date = new Date()
     this.message = DateUtil.formatTimestamp(current.getTime(), "yyyy-MM-dd")
     this.message2 = DateUtil.formatTimestamp(current.getTime(), "yyyy-MM-dd HH:mm:ss")
-
+    this.aFunc()
+  }
+  async aFunc() {
+    let bundleName = await AppUtil.getAppBundleName()
+    this.message3 = bundleName
   }
 
   build() {
