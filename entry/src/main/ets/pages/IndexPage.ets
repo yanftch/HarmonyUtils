@@ -1,13 +1,11 @@
-import { DateUtil } from 'common_lib'
 import { ClassBean } from '../bean/ClassBean';
-import { ClassFunctionGroupBean } from '../bean/ClassFunctionGroupBean';
 import { FunctionBean } from '../bean/FunctionBean';
-import { HomeListItemBean } from '../bean/HomeListItemBean';
 import Constants from '../Constants';
 import ClassNameView from '../view/ClassNameView';
 import FunctionNameView from '../view/FunctionNameView';
 import ClassNameViewModel from '../viewmodel/ClassNameViewModel';
 import { promptAction } from '@kit.ArkUI';
+import { AppUtil } from 'common_lib/Index';
 
 @Entry
 @Component
@@ -18,6 +16,7 @@ struct IndexPage {
   @State currentClassNameId: number = 0
   private classNameScroller: Scroller = new Scroller();
   private functionNameScroller: Scroller = new Scroller();
+  @State message: string = "验证方法"
 
   aboutToAppear(): void {
     this.list = ClassNameViewModel.getData()
@@ -39,63 +38,76 @@ struct IndexPage {
     }
   }
 
+  async aFunc() {
+    let name = await AppUtil.getAppBundleName()
+    console.log("debug_IndexPage: name = " + name)
+    this.message = name + ""
+  }
+
   build() {
-    Row() {
-      // className
-      List({ scroller: this.classNameScroller }) {
-        ForEach(this.list, (item: ClassBean, index: number) => {
-          ClassNameView({
-            className: item.className, isSelected: this.currentClassNameId === index,
-            onItemClick: () => {
-              this.changeClassName(index, true)
-            }
-          })
-
-        }, (item: ClassBean) => item.className + ":" + this.currentClassNameId)
-      }
-      .scrollBar(BarState.Off)
-      .backgroundColor($r('app.color.color_0D182431'))
-      .height(Constants.FULL_PERCENT)
-      .width('40%')
-
-      // functionName
-      List({ scroller: this.functionNameScroller }) {
-        ForEach(this.list, (item: ClassBean) => {
-          ListItemGroup({ header: this.ClassNameHeader(item.className), space: 6 }) {
-            ForEach(item.functionNameList, (funItem: FunctionBean, index: number) => {
-              ListItem() {
-                FunctionNameView({
-                  functionNameBeanString: JSON.stringify(funItem), onItemClick: () => {
-                    import('common_lib').then((ns: ESObject) => {
-                      try {
-                        let className: string | undefined = item.className
-                        let functionName: string | undefined = funItem.functionName
-                        if (className && functionName) {
-                          let result: object = ns[className][functionName]()
-                          let toastMessage: string | undefined = funItem.toastMessage
-                          console.log("debug_IndexPage: functionName ItemClick = " + result)
-                          if (toastMessage) {
-                            promptAction.showToast({ message: "执行结果：[" + toastMessage + "] => " + result })
-                          } else {
-                            promptAction.showToast({ message: "执行结果：" + result })
-                          }
-                        }
-                      } catch (e) {
-                        console.log("debug_Index: e = " + JSON.stringify(e))
-                      }
-                    });
-                  }
-                })
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .onClick(() => {
+            this.aFunc()
+        })
+      Row() {
+        // className
+        List({ scroller: this.classNameScroller }) {
+          ForEach(this.list, (item: ClassBean, index: number) => {
+            ClassNameView({
+              className: item.className, isSelected: this.currentClassNameId === index,
+              onItemClick: () => {
+                this.changeClassName(index, true)
               }
-            }, (funcItem: FunctionBean) => `${funcItem.id}`)
-          }
-        }, (item: ClassBean) => `${item.id}`)
+            })
+
+          }, (item: ClassBean) => item.className + ":" + this.currentClassNameId)
+        }
+        .scrollBar(BarState.Off)
+        .backgroundColor($r('app.color.color_0D182431'))
+        .height(Constants.FULL_PERCENT)
+        .width('40%')
+
+        // functionName
+        List({ scroller: this.functionNameScroller }) {
+          ForEach(this.list, (item: ClassBean) => {
+            ListItemGroup({ header: this.ClassNameHeader(item.className), space: 6 }) {
+              ForEach(item.functionNameList, (funItem: FunctionBean, index: number) => {
+                ListItem() {
+                  FunctionNameView({
+                    functionNameBeanString: JSON.stringify(funItem), onItemClick: () => {
+                      import('common_lib').then((ns: ESObject) => {
+                        try {
+                          let className: string | undefined = item.className
+                          let functionName: string | undefined = funItem.functionName
+                          if (className && functionName) {
+                            let result: object = ns[className][functionName]()
+                            let toastMessage: string | undefined = funItem.toastMessage
+                            console.log("debug_IndexPage: functionName ItemClick = " + result)
+                            if (toastMessage) {
+                              promptAction.showToast({ message: "执行结果：[" + toastMessage + "] => " + result })
+                            } else {
+                              promptAction.showToast({ message: "执行结果：" + result })
+                            }
+                          }
+                        } catch (e) {
+                          console.log("debug_Index: e = " + JSON.stringify(e))
+                        }
+                      });
+                    }
+                  })
+                }
+              }, (funcItem: FunctionBean) => `${funcItem.id}`)
+            }
+          }, (item: ClassBean) => `${item.id}`)
+        }
+        .sticky(StickyStyle.Header)
+        .onScrollIndex((index: number) => this.changeClassName(index, false))
+        .scrollBar(BarState.Off)
+        .height(Constants.FULL_PERCENT)
+        .width('60%')
       }
-      .sticky(StickyStyle.Header)
-      .onScrollIndex((index: number) => this.changeClassName(index, false))
-      .scrollBar(BarState.Off)
-      .height(Constants.FULL_PERCENT)
-      .width('60%')
     }
     .backgroundColor($r("app.color.color_0D182431"))
     .width(Constants.FULL_PERCENT)
