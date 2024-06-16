@@ -3,6 +3,10 @@
     {
       "name": "page_show",
       "value": "page from package"
+    },
+    {
+      "name": "keyboard_permission",
+      "value": "键盘能力"
     }
   ]
 }

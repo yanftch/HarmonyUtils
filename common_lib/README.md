@@ -1,10 +1,11 @@
 # 简介
+
 在Harmony开发过程中，需要用到许多工具类，如与系统交互、获取基本信息等等，为了方便查找和快速使用，因此整理了如下工具类集合
 便于快速开发鸿蒙应用~
 
 # 仓库地址
-https://github.com/yanftch/common-utils
 
+https://github.com/yanftch/common-utils
 
 # 整体大纲
 
@@ -25,22 +26,25 @@ https://github.com/yanftch/common-utils
 
 ## AppUtil  [查看源码](https://github.com/yanftch/common-utils/blob/main/common_lib/src/main/ets/lib/utils/AppUtil.ets)
 
-| 方法                                                                      | 作用            |
-|-------------------------------------------------------------------------|---------------|
-| init(context: common.UIAbilityContext, windowStage: window.WindowStage) | 全局初始化         |
-| startSettingsAbility(context: common.UIAbilityContext)                  | 拉起设置应用的主界面    |
-| startPermissionAbility(bundleName: string)                              | 拉起设置应用的权限设置页面 |
-| startSettingsAbilityFor(context: common.UIAbilityContext, uri: string)  | 拉起设置应用的常用界面   |
-| startSettingsAbilityForWifi                                             | 拉起wifi设置页面    |
-| startSettingsAbilityForBlueTooth                                        | 拉起蓝牙设置页面      |
-| startSettingsAbilityForNFC                                              | 拉起NFC页面       |
-| startSettingsAbilityForNotify                                           | 拉起通知和状态栏      |
-| startSettingsAbilityForDevice                                           | 拉起关于本机界面      |
-| startMMSAbility(userName: string, phone: string)                        | 拉起短信界面        |
-| startCallAbility(phone: string)                                         | 拉起拨号界面        |
-| startBrowsableAbility(url: string)                                      | 拉起浏览器应用       |
-| startAppStoreDetailAbility(bundleName: string)                          | 拉起应用市场界面      |
-| startCameraPicker                                                       | 拉起相机界面        |
+| 方法                                                                      | 作用             |
+|-------------------------------------------------------------------------|----------------|
+| init(context: common.UIAbilityContext, windowStage: window.WindowStage) | 全局初始化          |
+| startSettingsAbility(context: common.UIAbilityContext)                  | 拉起设置应用的主界面     |
+| startPermissionAbility(bundleName: string)                              | 拉起设置应用的权限设置页面  |
+| startSettingsAbilityFor(context: common.UIAbilityContext, uri: string)  | 拉起设置应用的常用界面    |
+| startSettingsAbilityForWifi                                             | 拉起wifi设置页面     |
+| startSettingsAbilityForBlueTooth                                        | 拉起蓝牙设置页面       |
+| startSettingsAbilityForNFC                                              | 拉起NFC页面        |
+| startSettingsAbilityForNotify                                           | 拉起通知和状态栏       |
+| startSettingsAbilityForDevice                                           | 拉起关于本机界面       |
+| startMMSAbility(userName: string, phone: string)                        | 拉起短信界面         |
+| startCallAbility(phone: string)                                         | 拉起拨号界面         |
+| startBrowsableAbility(url: string)                                      | 拉起浏览器应用        |
+| startAppStoreDetailAbility(bundleName: string)                          | 拉起应用市场界面       |
+| startCameraPicker                                                       | 拉起相机界面         |
+| getAppVersionCode()                                                     | 获取应用版本号        |
+| getAppVersionName()                                                     | 获取应用版本名        |
+| getAppBundleName()                                                      | 获取应用bundleName |
 
 ## DateUtil [查看源码](https://github.com/yanftch/common-utils/blob/main/common_lib/src/main/ets/lib/utils/DateUtil.ets)
 

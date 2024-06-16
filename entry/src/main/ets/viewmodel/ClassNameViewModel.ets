@@ -65,5 +65,8 @@ const ALL_DATA: ClassFunctionGroupBean[] = [
   new ClassFunctionGroupBean(parentId_ScreenUtil, "ScreenUtil", 5, "isFoldable", "是否可折叠设备"),
 
 
+
+
+
 ]
  
